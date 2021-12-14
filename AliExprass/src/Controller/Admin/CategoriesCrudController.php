@@ -3,7 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class CategoriesCrudController extends AbstractCrudController
 {
@@ -12,14 +16,15 @@ class CategoriesCrudController extends AbstractCrudController
         return Categories::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
+            IdField::new('id')->hideOnForm(), // Il ne sera pas affiché au formilaire,
+            TextField::new('name'),
             TextEditorField::new('description'),
+            ImageField::new('image')->setBasePath('/assets/uploads/categories/') //la ou on va rechercher les images
+                ->setUploadDir('public/assets/uploads/categories/') //la ou on va stoquer  les image
         ];
     }
-    */
 }

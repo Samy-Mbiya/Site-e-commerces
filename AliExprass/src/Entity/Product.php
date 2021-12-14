@@ -69,10 +69,7 @@ class Product
      */
     private $category;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=TagsProduct::class, mappedBy="product")
-     */
-    private $tagsProducts;
+
 
     /**
      * @ORM\OneToMany(targetEntity=RelatedProduct::class, mappedBy="product")
@@ -110,6 +107,7 @@ class Product
         $this->tagsProducts = new ArrayCollection();
         $this->relatedProducts = new ArrayCollection();
         $this->reviewsProducts = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -255,25 +253,6 @@ class Product
     public function getTagsProducts(): Collection
     {
         return $this->tagsProducts;
-    }
-
-    public function addTagsProduct(TagsProduct $tagsProduct): self
-    {
-        if (!$this->tagsProducts->contains($tagsProduct)) {
-            $this->tagsProducts[] = $tagsProduct;
-            $tagsProduct->addProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTagsProduct(TagsProduct $tagsProduct): self
-    {
-        if ($this->tagsProducts->removeElement($tagsProduct)) {
-            $tagsProduct->removeProduct($this);
-        }
-
-        return $this;
     }
 
     /**

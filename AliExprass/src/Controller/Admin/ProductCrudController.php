@@ -34,7 +34,9 @@ class ProductCrudController extends AbstractCrudController
             BooleanField::new('isSpecialOffer'),
             AssociationField::new('category'),
             ImageField::new('image')->setBasePath('/assets/uploads/products/') //la ou on va rechercher les images
-                ->setUploadDir('public/assets/uploads/products/') //la ou on va stoquer  les image 
+                ->setUploadDir('public/assets/uploads/products/') //la ou on va stoquer  les image
+                ->setUploadedFileNamePattern('[randomhash].[extension]') // Permet de determiner l'extention et de nommer differament les image mm s'ils sont identique 
+                ->setRequired(false), // Le champne pas obligatoire     
         ];
     }
 }

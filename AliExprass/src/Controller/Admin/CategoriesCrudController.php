@@ -25,6 +25,8 @@ class CategoriesCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             ImageField::new('image')->setBasePath('/assets/uploads/categories/') //la ou on va rechercher les images
                 ->setUploadDir('public/assets/uploads/categories/') //la ou on va stoquer  les image
+                ->setUploadedFileNamePattern('[randomhash].[extension]') // Permet de determiner l'extention et de nommer differament les image mm s'ils sont identique 
+                ->setRequired(false), // Le champne pas obligatoire         
         ];
     }
 }

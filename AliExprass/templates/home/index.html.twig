@@ -26,14 +26,19 @@
 								<li class="nav-item">
 									<a class="nav-link" id="sellers-tab" data-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
 								</li>
-
+								<li class="nav-item">
+									<a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="specieloffer-tab" data-toggle="tab" href="#specieloffer" role="tab" aria-controls="specieloffer" aria-selected="false">Special Offer</a>
+								</li>
 							</ul>
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
 								<div
 									class="row shop_container">
-									<!-- Inclusion par bouble de chaque valeur du produit -->
+									<!-- Inclusion par bouble de chaque valeur du produit pour New arrival -->
 									{% for product in productNewArrival %}
 										{{ include("partials/product.html.twig", {'product': product}) }}
 									{% endfor %}
@@ -42,14 +47,30 @@
 							<div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
 								<div
 									class="row shop_container">
-									<!-- Inclusion par bouble de chaque valeur du produit -->
+									<!-- Inclusion par bouble de chaque valeur du produit pour Bestller -->
 									{% for product in productBestSeller %}
 										{{ include("partials/product.html.twig", {'product': product}) }}
 									{% endfor %}
 								</div>
 							</div>
-
-
+							<div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+								<div
+									class="row shop_container">
+									<!-- Inclusion par bouble de chaque valeur du produit  Featured -->
+									{% for product in productFeatured %}
+										{{ include("partials/product.html.twig", {'product': product}) }}
+									{% endfor %}
+								</div>
+							</div>
+							<div class="tab-pane fade" id="specieloffer" role="tabpanel" aria-labelledby="specieloffer-tab">
+								<div
+									class="row shop_container">
+									<!-- Inclusion par bouble de chaque valeur du produit pour special offer -->
+									{% for product in productSpecialOffer %}
+										{{ include("partials/product.html.twig", {'product': product}) }}
+									{% endfor %}
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

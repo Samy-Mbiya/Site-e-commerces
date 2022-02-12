@@ -134,49 +134,67 @@
 					<li class="dropdown cart_dropdown">
 						<a class="nav-link cart_trigger" href="#" data-toggle="dropdown">
 							<i class="linearicons-cart"></i>
-							<span class="cart_count">2</span>
+							<span class="cart_count">
+								<!-- Affichage des quantité de commande -->
+								{# Ici on ne passe pas par le constructeur on par directement a la session services/CartServices.php (ref.1)#}
+								{% set quantity =  0 %}
+									{% for element in app.session.get('cartData') %}
+								{% set quantity = quantity + element.quantity %}
+								{% endfor %}
+							{{ quantity}}
+						</span>
 						</a>
-						<div class="cart_box dropdown-menu dropdown-menu-right">
-							<ul class="cart_list">
-								<li>
-									<a href="#" class="item_remove">
-										<i class="ion-close"></i>
-									</a>
-									<a href="#"><img src="https://placehold.it/300" alt="cart_thumb1">Variable product 001</a>
-									<span class="cart_quantity">
-										1 x
-										<span class="cart_amount">
-											<span class="price_symbole">$</span>
-										</span>78.00</span>
-								</li>
-								<li>
-									<a href="#" class="item_remove">
-										<i class="ion-close"></i>
-									</a>
-									<a href="#"><img src="https://placehold.it/300" alt="cart_thumb1">Variable product 001</a>
-									<span class="cart_quantity">
-										1 x
-										<span class="cart_amount">
-											<span class="price_symbole">$</span>
-										</span>78.00</span>
-								</li>
+						<!-- Affichage des information du panier (commande)-->
+							<div class="cart_box dropdown-menu dropdown-menu-right"> <ul class="cart_list">
 
+								{% if app.session.get('cartData') %}
+									{% set subTotal = 0 %}
+									<!-- app.session.get('CartData') permet de recuperer les information de la session -->
+									{% for element in app.session.get('cartData')%}
+										{% set subTotal = subTotal + (element.quantity * element.produit.price /100) %}
+										<li>
+											<a href="{{ path('cart_deleteallcart', {'id': element.produit.id})}}" class="item_remove">
+												<i class="ion-close"></i>
+											</a>
+											<a href="#"><img src="/assets/uploads/products/{{element.produit.image}}" alt="{{element.produit.name}}">{{element.produit.name}}</a>
+											<span class="cart_quantity">
+												{{element.quantity}}
+												x
+												<span class="cart_amount">
+													<span class="price_symbole">$</span>
+												</span>
+												{{element.produit.price /100 }}</span>
+										</li>
+
+									{% endfor %}
+								{% else %}
+									<li>Your cart is empty !</li>
+								{% endif %}
 							</ul>
-							<div class="cart_footer">
-								<p class="cart_total">
-									<strong>Subtotal:</strong>
-									<span class="cart_price">
-										<span class="price_symbole">$</span>
-									</span>159.00</p>
-								<p class="cart_buttons">
-									<a href="#" class="btn btn-fill-line rounded-0 view-cart">View Cart</a>
-									<a href="#" class="btn btn-fill-out rounded-0 checkout">Checkout</a>
-								</p>
-							</div>
-						</div>
+
+							{% if app.session.get('cartData') %}
+								<div class="cart_footer">
+									<p class="cart_total">
+										<strong>Subtotal HT:</strong>
+										<span class="cart_price">
+											<span class="price_symbole">$</span>
+										</span>
+										{{ subTotal  }}
+									</p>
+
+									<p class="cart_buttons">
+										<a href="{{path('cart')}}" class="btn btn-fill-line rounded-0 view-cart">View Cart</a>
+										<a href="#" class="btn btn-fill-out rounded-0 checkout">Checkout</a>
+									</p>
+								</div>
+							{% endif %}
+
+						</li>
 					</li>
 				</ul>
-			</nav>
-		</div>
-	</div>
-</header>
+
+
+			</div>
+		</li>
+	</ul>
+</nav></div></div></header>

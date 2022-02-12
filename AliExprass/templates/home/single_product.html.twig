@@ -247,8 +247,10 @@
 						class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
 						<!-- Affichage des produits de meme categorie on fais la requette et on l'envoi dans product_item.html.twig   -->
 						{% for category in product.category %}
-							{% for product in category.products %}
-								{{ include('partials/product_item.html.twig' , {'product':product}) }}
+							{% for productRelated in category.products %}
+								{% if product is not same as productRelated %}
+									{{ include('partials/product_item.html.twig' , {'product':productRelated}) }}
+								{% endif %}
 							{% endfor %}
 						{% endfor %}
 					</div>

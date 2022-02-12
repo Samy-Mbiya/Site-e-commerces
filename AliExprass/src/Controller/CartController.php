@@ -21,9 +21,9 @@ class CartController extends AbstractController
      */
     public function index(): Response //Extention de l'objet $cartServices qui est dans la class CartServices 
     {
-        //$cartServices->addtoCart(3); // Recuperation de la methode addtoCart
-        //dd($cartServices->getCart()); // Recuperation de la methode getCart
-        $cart = $this->cartServices->getfullCart();
+        $cart = $this->cartServices->getfullCart(); //Recuperation de la methode getfullCart()
+
+
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
             'cart' => $cart,
@@ -48,6 +48,17 @@ class CartController extends AbstractController
     {
         //$cartServices->deleteCart();
         $this->cartServices->deleteFromCart($id);
+        return $this->redirectToRoute("cart"); // on redirige vers le la route cart
+    }
+
+    /**
+     * @Route("/cart/deletetallcart/{id}", name="cart_deleteallcart")
+     */
+
+    public function deleteAllCart($id, CartServices $cartServices): Response // Suppression d'une commande du produit dans le panier
+    {
+        //$cartServices->deleteCart();
+        $this->cartServices->deleteAllCart($id);
         return $this->redirectToRoute("cart"); // on redirige vers le la route cart
     }
 }

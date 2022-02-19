@@ -22,7 +22,9 @@ class CartController extends AbstractController
     public function index(): Response //Extention de l'objet $cartServices qui est dans la class CartServices 
     {
         $cart = $this->cartServices->getfullCart(); //Recuperation de la methode getfullCart()
-
+        if (!$cart) {
+            return $this->redirectToRoute("home");
+        }
 
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',

@@ -1,0 +1,61 @@
+[
+    {
+        "stmt": "SELECT * FROM categories;",
+        "header": [
+            "id",
+            "name",
+            "description",
+            "image"
+        ],
+        "rows": [
+            [
+                "1",
+                "Homme",
+                "<div>Pas pour enfant</div>",
+                "e43e1f33b55695c10baf0c7883a279cf9a34e110.jpg"
+            ],
+            [
+                "2",
+                "Femme",
+                "<div>Pour adulte</div>",
+                "d13335250463e63ab8082f10e73ee6fbc1b15c29.jpg"
+            ],
+            [
+                "3",
+                "bonnet",
+                "NULL",
+                "8c98386e00a13bcbdac740051f3c1b0049b43d4e.webp"
+            ],
+            [
+                "4",
+                "montre",
+                "NULL",
+                "cbb506fb02fcab4fbe142cc64521c1fd4989f034.jpg"
+            ],
+            [
+                "5",
+                "bijou",
+                "NULL",
+                "6becea6dd86042965d62acfeb9cfd893a730258e.jpg"
+            ],
+            [
+                "6",
+                "portable",
+                "NULL",
+                "9c92c8ed8616c96538ce3747c7eefc870da785ff.jpg"
+            ],
+            [
+                "7",
+                "drone",
+                "NULL",
+                "7dc872ba5f08e0a559c7fba6deb0e52ed825a309.jpg"
+            ],
+            [
+                "8",
+                "gadget",
+                "NULL",
+                "09cd3bde8b212f86f932c23ab02f05b29b6f06f3.webp"
+            ]
+        ]
+    }
+]

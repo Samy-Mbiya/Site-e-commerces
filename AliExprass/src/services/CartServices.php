@@ -84,7 +84,7 @@ class CartServices
             $product = $this->repoProduct->find($id); // On recuper les info de la table produit vias son repository
             if ($product) { // Affectation au tableau $fullCart[] s'ils sont
                 // Affiche le produit et sa quantité ref.1
-                $fullCart[] = [
+                $fullCart['products'][] = [
                     "quantity" => $quantity,
                     "produit" => $product
                 ];
@@ -96,12 +96,12 @@ class CartServices
             }
         }
         // le Calcul du total de produit 
-        /*$fullCart['data'] = [
+        $fullCart['data'] = [
             "quantity_cart" => $quantity_cart,
             "subTotalHT" => $subTotal,
             "Taxe" => round($subTotal * $this->tva, 2), // Arondir la valeur a 2 chiffre apres la virgule
             "subTotalTTC" => round(($subTotal + ($subTotal * $this->tva)), 2)
-        ];*/
+        ];
         //dd($fullCart);
         return $fullCart;
     }

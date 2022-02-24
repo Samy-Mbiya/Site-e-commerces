@@ -42,3 +42,4 @@ security:
         # permet a un persone de se connecter que s'il a le compte user
          - { path: ^/account, roles: ROLE_USER }
          - { path: ^/address, roles: ROLE_USER }
+         - { path: ^/checkout, roles: ROLE_USER }

@@ -147,10 +147,10 @@
 						<!-- Affichage des information du panier (commande)-->
 							<div class="cart_box dropdown-menu dropdown-menu-right"> <ul class="cart_list">
 
-								{% if app.session.get('cartData') %}
+								{% if app.session.get('cart') %}
 									{% set subTotal = 0 %}
 									<!-- app.session.get('CartData') permet de recuperer les information de la session -->
-									{% for element in app.session.get('cartData')%}
+									{% for element in app.session.get('cartData') %}
 										{% set subTotal = subTotal + (element.quantity * element.produit.price /100) %}
 										<li>
 											<a href="{{ path('cart_deleteallcart', {'id': element.produit.id})}}" class="item_remove">
@@ -184,7 +184,7 @@
 
 									<p class="cart_buttons">
 										<a href="{{path('cart')}}" class="btn btn-fill-line rounded-0 view-cart">View Cart</a>
-										<a href="#" class="btn btn-fill-out rounded-0 checkout">Checkout</a>
+										<a href="{{ path('checkout')}}" class="btn btn-fill-out rounded-0 checkout">Checkout</a>
 									</p>
 								</div>
 							{% endif %}

@@ -22,7 +22,7 @@ class CartController extends AbstractController
     public function index(): Response //Extention de l'objet $cartServices qui est dans la class CartServices 
     {
         $cart = $this->cartServices->getfullCart(); //Recuperation de la methode getfullCart()
-        if (!$cart) {
+        if (!isset($cart['products'])) {
             return $this->redirectToRoute("home");
         }
 

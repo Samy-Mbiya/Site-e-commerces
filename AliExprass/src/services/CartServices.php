@@ -85,9 +85,15 @@ class CartServices
             if ($product) { // Affectation au tableau $fullCart[] s'ils sont
                 // Affiche le produit et sa quantité ref.1
                 $fullCart['products'][] = [
-                    "quantity" => $quantity,
-                    "produit" => $product
+                    'quantity' => $quantity,
+                    'produit' => $product
                 ];
+                //--------------------
+                /*$fullCart[$product->getId()] = [
+                    'quantitys' => $quantity
+                ];*/
+
+                //---------------
                 // Recuperation des valeurs de pour calculer le total 
                 $quantity_cart += $quantity;
                 $subTotal += $quantity * $product->getPrice() / 100;

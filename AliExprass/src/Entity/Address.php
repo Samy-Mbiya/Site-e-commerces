@@ -176,7 +176,7 @@ class Address
         return $this;
     }
 
-    // Pour renver le string 
+    // Pour retouner  le string 
     public function __toString()
     {
         $result = $this->getFullName() . "<br>";

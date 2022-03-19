@@ -24,16 +24,18 @@ class CheckoutController extends AbstractController
         }
 
         if (!$user->getAddresses()->getValues()) { //s'il n'a pas d'adresse 
+            $this->addFlash('checkout_message', 'Please add an adress to yur account without continuing !');
             return $this->redirectToRoute("address_new");
         }
 
         // Creation du Formulair
-        $form = $this->createForm(CheckoutType::class, null, ['user' => $user]);
-        $form->handleRequest($request);
+        //$form = $this->createForm(CheckoutType::class, null, ['user' => $user]); // le user specifier permet a checkoutType de recuper les info dans user
+        // Analyser le formulaire
+        //$form->handleRequest($request);
         //Traitement du formulaire 
         return $this->render('checkout/index.html.twig', [
             'cart' => $cart,
-            'checkout' => $form->createView()
+
         ]);
     }
 }

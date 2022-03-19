@@ -47,7 +47,7 @@ class AddressController extends AbstractController
             $entityManager->persist($address);
             $entityManager->flush();
 
-            if ($cartServices->getfullCart()) {
+            if ($cartServices->getfullCart()) { // verifier s'il y a de produit dan sle panier 
                 return $this->redirectToRoute("checkout");
             }
             $this->addFlash('address_message', 'Your adress as save ');

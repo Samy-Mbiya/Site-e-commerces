@@ -19,10 +19,10 @@ class CheckoutType extends AbstractType
                 EntityType::class,
                 [
                     'class' => Address::class,
-                    'required'  => true,
-                    'choices'  => $user->getAddresses(),
-                    'multiple' => false,
-                    'expanded' => true
+                    'required'  => true, // Champ obligatoir
+                    'choices'  => $user->getAddresses(), // permet de faire une choix
+                    'multiple' => false, // choix multiple 
+                    'expanded' => true // check Box
 
                 ]
             )
